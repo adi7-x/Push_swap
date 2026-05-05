@@ -1,53 +1,85 @@
-<h1 align="center">🔄 Push_swap</h1>
+# Push_swap - Efficiency at its Core
 
 <p align="center">
-  <strong>Sorting Algorithm Optimizer — 42 School</strong>
-</p>
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" />
+    <img src="https://img.shields.io/badge/42-000000?style=for-the-badge&logo=42&logoColor=white" />
+      <img src="https://img.shields.io/badge/Algorithms-FF6F00?style=for-the-badge" />
+        <img src="https://img.shields.io/badge/Optimization-00C853?style=for-the-badge" />
+</p>p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black"/>
-  <img src="https://img.shields.io/badge/42-000000?style=for-the-badge&logo=42&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Algorithms-FF6F00?style=for-the-badge"/>
-</p>
+## Overview
+The **Push_swap** project is a highly efficient sorting algorithm challenge from the 42 School curriculum. The goal is simple: sort a stack of integers using a second stack and a restricted set of operations, aiming for the **minimum number of moves**.
+
+This implementation utilizes an optimized **Mechanical Turk** approach, achieving high-performance results that comfortably exceed the maximum requirements for a perfect score.
 
 ---
 
-## About
+## Key Features
+- **Highly Optimized**: Efficiently handles small (3, 5 elements) and large (100, 500 elements) stacks.
+- - **Robust Error Handling**: Comprehensive validation for non-numeric input, duplicates, and integer overflows.
+  - - **Clean Architecture**: Modular C code following the 42 Norm.
+    - - **Bonus Included**: Features a custom `checker` to verify the sorting sequence.
+     
+      - ---
 
-An algorithmic challenge: sort a stack of integers using two stacks and a limited set of operations, in the **fewest moves possible**. This project explores sorting algorithms, algorithm complexity, and optimization strategies.
+      ## Operations
+      The algorithm manages two stacks, **A** and **B**, using the following operations:
 
-## Operations
+      | Op | Description |
+      | :--- | :--- |
+      | `sa`/`sb` | Swap the first two elements of stack A/B. |
+      | `ss` | `sa` and `sb` simultaneously. |
+      | `pa`/`pb` | Push the top element of one stack to the other. |
+      | `ra`/`rb` | Rotate stack (first element becomes last). |
+      | `rr` | `ra` and `rb` simultaneously. |
+      | `rra`/`rrb` | Reverse rotate (last element becomes first). |
+      | `rrr` | `rra` and `rrb` simultaneously. |
 
-| Operation | Description |
-|-----------|-------------|
-| `sa` / `sb` | Swap the first two elements of stack A / B |
-| `ss` | `sa` and `sb` simultaneously |
-| `pa` / `pb` | Push top of B onto A / Push top of A onto B |
-| `ra` / `rb` | Rotate stack A / B (first element becomes last) |
-| `rr` | `ra` and `rb` simultaneously |
-| `rra` / `rrb` | Reverse rotate stack A / B (last becomes first) |
-| `rrr` | `rra` and `rrb` simultaneously |
+      ---
 
-## Performance
+      ## Performance Metrics
+      My implementation consistently achieves the following benchmarks:
+      - **3 elements**: Max 3 moves.
+      - - **5 elements**: Max 12 moves.
+        - - **100 elements**: < 700 moves (Average).
+          - - **500 elements**: < 5500 moves (Average).
+           
+            - ---
 
-| Input Size | Operations | Target |
-|-----------|-----------|--------|
-| 3 elements | ≤ 3 | ≤ 3 |
-| 5 elements | ≤ 12 | ≤ 12 |
-| 100 elements | < 700 | < 700 |
-| 500 elements | < 5500 | < 5500 |
+            ## Usage
 
-## Usage
+            ### Compilation
+            ```bash
+            make          # Compiles push_swap
+            make bonus    # Compiles the checker
+            ```
 
-```bash
-make
-./push_swap 4 67 3 87 23
-# Outputs the list of operations to sort the stack
+            ### Execution
+            ```bash
+            ./push_swap 3 2 5 1 4
+            ```
 
-# Verify with the checker
-ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
-```
+            ### With Checker
+            ```bash
+            ARG="3 2 5 1 4"; ./push_swap $ARG | ./checker $ARG
+            ```
 
----
+            ---
 
-<p align="center"><sub>42 School · Common Core · Algorithms & Complexity</sub></p>
+            ## Algorithm Logic
+            The algorithm follows a "greedy" strategy:
+            1. **Push to B**: Elements are pushed from A to B based on their cost (total operations needed to place them in the correct position in B).
+            2. 2. **Small Sort**: The last 3 elements in A are sorted using a hardcoded optimal sequence.
+               3. 3. **Push back to A**: Elements are pushed back to A, ensuring they land in their final sorted position.
+                  4. 4. **Final Rotation**: Stack A is rotated until the smallest element is at the top.
+                    
+                     5. ---
+                    
+                     6. ## Author
+                     7. **Adil Bourji (adi7-x)**
+                     8. - GitHub: [@adi7-x](https://github.com/adi7-x)
+                        - - LinkedIn: [Adil Bourji](https://linkedin.com/in/adil-bourji)
+                         
+                          - ---
+                          <p align="center">Made for the 42 Network</p>p>
+                          
